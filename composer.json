@@ -1,0 +1,20 @@
+{
+  "name": "phpberry/phpberry",
+  "description": "a php framework",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bhavin Gajjar",
+      "email": "gajjarbhavin22@gmail.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Dipesh Sukhia",
+      "email": "dipesh.sukhia@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {}
+}

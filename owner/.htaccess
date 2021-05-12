@@ -1,0 +1,37 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+#Options -MultiViews
+RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+RewriteRule .* - [L,R=404]
+
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+Options -Indexes
+#ErrorDocument 400 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 401 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 402 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 403 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 404 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 405 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 406 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 407 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 408 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 409 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 410 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 411 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 412 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 413 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 414 http://%{HTTP_HOST}/owner/404
+#ErrorDocument 500 http://%{HTTP_HOST}/owner/500
+#ErrorDocument 501 http://%{HTTP_HOST}/owner/500
+#ErrorDocument 502 http://%{HTTP_HOST}/owner/500
+#ErrorDocument 503 http://%{HTTP_HOST}/owner/500
+#ErrorDocument 504 http://%{HTTP_HOST}/owner/500
+#ErrorDocument 505 http://%{HTTP_HOST}/owner/500
+order deny,allow

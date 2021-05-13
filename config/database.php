@@ -12,9 +12,9 @@ if(basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){header("Location: 40
         {
             $this->engine="mysql";
             $this->host="localhost";
-            $this->database="codephp";
+            $this->database="phpberry";
             $this->username="root";
-            $this->password=''; 
+            $this->password="";
             
             $dsn=$this->engine.":host=".$this->host.";dbname=".$this->database;
             parent::__construct($dsn,$this->username,$this->password);

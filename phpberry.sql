@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `codephp`
+-- Database: `phpberry`
 --
 
 -- --------------------------------------------------------
@@ -302,11 +302,7 @@ CREATE TABLE `helloworld` (
 
 INSERT INTO `helloworld` (`id`, `fname`, `lname`, `img`) VALUES
 (13, 'dipesh', 'sukhia', 'yeeeee.jpg'),
-(15, 'daksh', 'champaneria', 'yeeeee.jpg'),
-(16, 'heena', 'champaneria', 'yeeeee.jpg'),
-(17, 'piyush', 'champaneria', 'yeeeee.jpg'),
-(18, 'kinjal', 'gandhi', 'yeeeee.jpg'),
-(19, 'dhaval', 'gandhi', 'yeeeee.jpg');
+(15, 'bhavin', 'gajjar', 'yeeeee.jpg');
 
 --
 -- Indexes for dumped tables

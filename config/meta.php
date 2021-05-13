@@ -3,7 +3,7 @@ if(basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){header("Location: 40
 /*******************************************************************
             add  to your header in head tag for seo and comment it
 *******************************************************************/
-    $company="CodePHP";    
+    $company="phpberry";
     $description = "description";
     $jsmsg=true;
     $seo = true;

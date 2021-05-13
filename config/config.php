@@ -27,7 +27,7 @@ if(basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)){header("Location: 40
                        SEO
 ******************************************************************
         add this line in to head part    
-        $company="CodePHP";    
+        $company="phpberry";
         $jsmsg=true;
         $seo = true;
         require BASE_PATH.'config/meta.php';    

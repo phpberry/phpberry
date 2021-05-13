@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php 
-    require 'config/bootstrap.php';  
-    require 'config/meta.php';  
+    <?php
+    require 'config/bootstrap.php';
+    require 'config/meta.php';
     ?>
 </head>
 <body>

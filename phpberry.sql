@@ -7,8 +7,10 @@
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET
+SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET
+time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,70 +28,71 @@ SET time_zone = "+00:00";
 -- Table structure for table `countries`
 --
 
-CREATE TABLE `countries` (
-  `ccode` varchar(2) NOT NULL DEFAULT '',
-  `country` varchar(200) NOT NULL DEFAULT ''
+CREATE TABLE `countries`
+(
+    `ccode`   varchar(2)   NOT NULL DEFAULT '',
+    `country` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`ccode`, `country`) VALUES
-('AF', 'Afghanistan'),
-('AX', 'Aland Islands'),
-('AL', 'Albania'),
-('DZ', 'Algeria'),
-('AS', 'American Samoa'),
-('AD', 'Andorra'),
-('AO', 'Angola'),
-('AI', 'Anguilla'),
-('AQ', 'Antarctica'),
-('AG', 'Antigua and Barbuda'),
-('AR', 'Argentina'),
-('AM', 'Armenia'),
-('AW', 'Aruba'),
-('AU', 'Australia'),
-('AT', 'Austria'),
-('AZ', 'Azerbaijan'),
-('BS', 'Bahamas'),
-('BH', 'Bahrain'),
-('BD', 'Bangladesh'),
-('BB', 'Barbados'),
-('BY', 'Belarus'),
-('BE', 'Belgium'),
-('BZ', 'Belize'),
-('BJ', 'Benin'),
-('BM', 'Bermuda'),
-('BT', 'Bhutan'),
-('BO', 'Bolivia'),
-('BA', 'Bosnia and Herzegovina'),
-('BW', 'Botswana'),
-('BV', 'Bouvet Island'),
-('BR', 'Brazil'),
-('IO', 'British Indian Ocean Territory'),
-('BN', 'Brunei Darussalam'),
-('BG', 'Bulgaria'),
-('BF', 'Burkina Faso'),
-('BI', 'Burundi'),
-('KH', 'Cambodia'),
-('CM', 'Cameroon'),
-('CA', 'Canada'),
-('CV', 'Cape Verde'),
-('KY', 'Cayman Islands'),
-('CF', 'Central African Republic'),
-('TD', 'Chad'),
-('CL', 'Chile'),
-('CN', 'China'),
-('CX', 'Christmas Island'),
-('CC', 'Cocos (Keeling) Islands'),
-('CO', 'Colombia'),
-('KM', 'Comoros'),
-('CG', 'Congo'),
-('CD', 'Congo, The Democratic Republic of the'),
-('CK', 'Cook Islands'),
-('CR', 'Costa Rica'),
-('CI', 'C?te D\'Ivoire'),
+INSERT INTO `countries` (`ccode`, `country`)
+VALUES ('AF', 'Afghanistan'),
+       ('AX', 'Aland Islands'),
+       ('AL', 'Albania'),
+       ('DZ', 'Algeria'),
+       ('AS', 'American Samoa'),
+       ('AD', 'Andorra'),
+       ('AO', 'Angola'),
+       ('AI', 'Anguilla'),
+       ('AQ', 'Antarctica'),
+       ('AG', 'Antigua and Barbuda'),
+       ('AR', 'Argentina'),
+       ('AM', 'Armenia'),
+       ('AW', 'Aruba'),
+       ('AU', 'Australia'),
+       ('AT', 'Austria'),
+       ('AZ', 'Azerbaijan'),
+       ('BS', 'Bahamas'),
+       ('BH', 'Bahrain'),
+       ('BD', 'Bangladesh'),
+       ('BB', 'Barbados'),
+       ('BY', 'Belarus'),
+       ('BE', 'Belgium'),
+       ('BZ', 'Belize'),
+       ('BJ', 'Benin'),
+       ('BM', 'Bermuda'),
+       ('BT', 'Bhutan'),
+       ('BO', 'Bolivia'),
+       ('BA', 'Bosnia and Herzegovina'),
+       ('BW', 'Botswana'),
+       ('BV', 'Bouvet Island'),
+       ('BR', 'Brazil'),
+       ('IO', 'British Indian Ocean Territory'),
+       ('BN', 'Brunei Darussalam'),
+       ('BG', 'Bulgaria'),
+       ('BF', 'Burkina Faso'),
+       ('BI', 'Burundi'),
+       ('KH', 'Cambodia'),
+       ('CM', 'Cameroon'),
+       ('CA', 'Canada'),
+       ('CV', 'Cape Verde'),
+       ('KY', 'Cayman Islands'),
+       ('CF', 'Central African Republic'),
+       ('TD', 'Chad'),
+       ('CL', 'Chile'),
+       ('CN', 'China'),
+       ('CX', 'Christmas Island'),
+       ('CC', 'Cocos (Keeling) Islands'),
+       ('CO', 'Colombia'),
+       ('KM', 'Comoros'),
+       ('CG', 'Congo'),
+       ('CD', 'Congo, The Democratic Republic of the'),
+       ('CK', 'Cook Islands'),
+       ('CR', 'Costa Rica'),
+       ('CI', 'C?te D\'Ivoire'),
 ('HR', 'Croatia'),
 ('CU', 'Cuba'),
 ('CY', 'Cyprus'),
@@ -152,10 +155,10 @@ INSERT INTO `countries` (`ccode`, `country`) VALUES
 ('KE', 'Kenya'),
 ('KI', 'Kiribati'),
 ('KP', 'Korea, Democratic People\'s Republic of'),
-('KR', 'Korea, Republic of'),
-('KW', 'Kuwait'),
-('KG', 'Kyrgyzstan'),
-('LA', 'Lao People\'s Democratic Republic'),
+       ('KR', 'Korea, Republic of'),
+       ('KW', 'Kuwait'),
+       ('KG', 'Kyrgyzstan'),
+       ('LA', 'Lao People\'s Democratic Republic'),
 ('LV', 'Latvia'),
 ('LB', 'Lebanon'),
 ('LS', 'Lesotho'),
@@ -277,11 +280,11 @@ INSERT INTO `countries` (`ccode`, `country`) VALUES
 ('VN', 'Viet Nam'),
 ('VG', 'Virgin Islands, British'),
 ('VI', 'Virgin Islands, U.S.'),
-('WF', 'Wallis And Futuna'),
-('EH', 'Western Sahara'),
-('YE', 'Yemen'),
-('ZM', 'Zambia'),
-('ZW', 'Zimbabwe');
+(' WF ', ' Wallis And Futuna '),
+(' EH ', ' Western Sahara '),
+(' YE ', ' Yemen '),
+(' ZM ', ' Zambia '),
+(' ZW ', ' Zimbabwe ');
 
 -- --------------------------------------------------------
 
@@ -301,8 +304,8 @@ CREATE TABLE `helloworld` (
 --
 
 INSERT INTO `helloworld` (`id`, `fname`, `lname`, `img`) VALUES
-(13, 'dipesh', 'sukhia', 'yeeeee.jpg'),
-(15, 'bhavin', 'gajjar', 'yeeeee.jpg');
+(13, ' dipesh ', ' sukhia ', ' yeeeee.jpg '),
+(15, ' bhavin ', ' gajjar ', ' yeeeee.jpg ');
 
 --
 -- Indexes for dumped tables

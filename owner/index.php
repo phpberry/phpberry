@@ -16,11 +16,11 @@ echo dirname(__DIR__);
 echo str_replace(basename(dirname($_SERVER['SCRIPT_FILENAME'])) . '/' . basename($_SERVER['SCRIPT_FILENAME']), '', str_replace(substr('/' . $_SERVER['PATH_INFO'], 1), '', SERVER_NAME . $_SERVER['PHP_SELF']));
 $table = 'helloworld';
 $con = 'OR';
-$fatchfield = [
+$fetchField = [
     'fname',
     'lname',
 ];
-$wherefield = [
+$whereField = [
     'fname' => 'Dipesh',
     'img' => '54545454545.jpg',
 ];

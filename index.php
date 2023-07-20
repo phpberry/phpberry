@@ -29,11 +29,11 @@ echo segment(0);
 
 $table = 'helloworld';
 $con = 'OR';
-$fatchfield = [
+$fetchField = [
     'fname',
     'lname',
 ];
-$wherefield = [
+$whereField = [
     'id' => 15,
 ];
 $dynamicHandle = new CpMDynamic();
@@ -55,7 +55,7 @@ var_dump($jsonobjList);
 
 <?php
 
-/*  $fatchfield = array(
+/*  $fetchField = array(
       'table1' => array("f11", "f12","f13"),
       'table2' => array("f21", "f22","f23"),
   );
@@ -64,15 +64,15 @@ var_dump($jsonobjList);
       'table2' => "f21",
   );
   $dynamicHandle=new CpMDynamic();
-  $dynamicList=$dynamicHandle->join($fatchfield,$compare);*/
+  $dynamicList=$dynamicHandle->join($fetchField,$compare);*/
 $table = 'helloworld';
 $con = 'OR';
-$wherefield = [
+$whereField = [
     'fname' => 'dipesh',
     'lname' => 'sukhia',
 ];
 $dynamicHandle = new CpMDynamic();
-$dynamicList = $dynamicHandle->count($table, $wherefield, $con);
+$dynamicList = $dynamicHandle->count($table, $whereField, $con);
 var_dump($dynamicList);
 ?>
 <?php

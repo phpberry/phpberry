@@ -13,7 +13,7 @@ date_default_timezone_set('Asia/Kolkata');
  * COMPRESS HTML OUTPUT
  */
 if (false) {
-    require_once CP_HOOk_PATH . 'CP_Hcompress.php';
+    require_once CP_HOOK_PATH . 'CP_Hcompress.php';
 }
 /*
  * PHP to ASP.NET WITH ERROR REPORTING
@@ -26,7 +26,7 @@ if (false) {
  */
 if (false) {
     $second = 5;
-    require_once CP_HOOk_PATH . 'CP_Hexecutionconfig.php';
+    require_once CP_HOOK_PATH . 'CP_Hexecutionconfig.php';
 }
 /*
  * SEO
@@ -47,5 +47,5 @@ if (false) {
  * DEVELOPER TOOLS DISABLE
  ******************************************************************
  * add this line in to head part
- * require_once CP_HOOk_PATH.'CP_HdeveloperOptionBlock.php';
+ * require_once CP_HOOK_PATH.'CP_HdeveloperOptionBlock.php';
  */

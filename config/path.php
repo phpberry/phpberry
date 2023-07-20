@@ -16,7 +16,7 @@ define('BASE_URL', SERVER_NAME . '/');
 define('ERROR_LOG_PATH', BASE_PATH . $path['system'] . '/CP_Temp/myerrors.log');
 define('CP_MODELS_PATH', BASE_PATH . $path['system'] . '/CP_Models/');
 define('CP_LIBS_PATH', BASE_PATH . $path['system'] . '/CP_Libraries/');
-define('CP_HOOk_PATH', BASE_PATH . $path['system'] . '/CP_Hooks/');
+define('CP_HOOK_PATH', BASE_PATH . $path['system'] . '/CP_Hooks/');
 define('ERROR_REDIRECT_PAGE', BASE_PATH . $path['system'] . '/CP_Temp/errorpage.php');
 
 define('HOOKS_URL', BASE_URL . $path['mysystem'] . '/hooks/');

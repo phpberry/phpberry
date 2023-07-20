@@ -5,14 +5,15 @@ declare(strict_types=1);
 require 'config/bootstrap.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <?php
     require BASE_PATH . 'config/meta.php';
 ?>
+    <title>phpberry</title>
 </head>
 <body>
-<img id="CPcaptcha" src="<?php echo HOOKS_URL; ?>captcha"/>
+<img id="CPcaptcha" src="<?php echo HOOKS_URL; ?>captcha" alt=""/>
 <button onclick="document.getElementById('CPcaptcha').src='<?php echo HOOKS_URL; ?>captcha'">Refresh</button>
 <p id="demo"></p>
 

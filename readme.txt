@@ -6,6 +6,6 @@ add this line in all files which have to restrict direct use
 
 you can on off seo in seo.php in config folder
 
-when u call files via php like requrie , include file add.php in last 
+when u call files via php like require , include file add.php in last
 
-hooks folder are added in that capcha and aftertime file exist
+hooks folder are added in that captcha and after-time file exist

@@ -11,6 +11,8 @@ require 'config/bootstrap.php';
     require BASE_PATH . 'config/meta.php';
 ?>
     <title>phpberry</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body>
 <img id="CPcaptcha" src="<?php echo HOOKS_URL; ?>captcha" alt=""/>

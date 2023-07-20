@@ -13,7 +13,8 @@
     "ext-pdo": "*",
     "ext-json": "*",
     "ext-mcrypt": "*",
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "symfony/dotenv": "^6.3"
   },
   "require-dev": {
     "nunomaduro/phpinsights": "^2.8"

@@ -9,12 +9,13 @@ declare(strict_types=1);
 // }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <?php
     require 'config/bootstrap.php';
 require 'config/meta.php';
 ?>
+    <title>phpberry</title>
 </head>
 <body>
 <form action="upload" method="post" enctype="multipart/form-data">

@@ -24,6 +24,6 @@ $wherefield = [
     'fname' => 'Dipesh',
     'img' => '54545454545.jpg',
 ];
-$dynamicHandle = new CP_Mdynamic();
+$dynamicHandle = new CpMDynamic();
 $dynamicList = $dynamicHandle->select($table);
 var_dump($dynamicList);

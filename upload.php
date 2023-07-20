@@ -15,7 +15,7 @@ $config = [
     'format' => ['jpg', 'png', 'gif'],
     'foldername' => 'img',
 ];
-$fileHandle = new CP_Lupload_file();
+$fileHandle = new CpLUploadFile();
 $result = $fileHandle->upload_file($config);
 if (! $result['result']) {
     echo $result['error'];
@@ -23,7 +23,7 @@ if (! $result['result']) {
     echo $result['filename'];
 }
 
-/*    $fileHandle=new CP_Lupload_file();
+/*    $fileHandle=new CpLUploadFile();
     $result=$fileHandle->delete_file( "14906708221490670822.jpg","img" );
     if(!$result['result']){
         echo $result['error'];

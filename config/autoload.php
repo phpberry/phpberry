@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
 require_once 'database.php';
-require_once 'base_model.php';
+require_once 'BaseModel.php';
 function CP_LoadModels($className): void
 {
     if (file_exists(CP_MODELS_PATH . $className . '.php')) {

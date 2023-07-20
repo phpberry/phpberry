@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
 
-class CP_Mdynamic extends base_model
+class CpMDynamic extends BaseModel
 {
     public function __construct()
     {
@@ -24,7 +24,7 @@ class CP_Mdynamic extends base_model
      * 'lname' => 'champaneria',
      * 'img'=> 'yeeeee.jpg',
      * );
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->insert($table,$fieldvalue,true);
      */
     public function insert($table, $fieldvalue, $id = false)
@@ -57,7 +57,7 @@ class CP_Mdynamic extends base_model
      * 'lname' => 'champaneria',
      * 'img' => '54545454545.jpg',
      * );
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->update($table,$updatefield,$wherefield,$con);
      * or
      * $dynamicList=$dynamicHandle->update($table,$updatefield);
@@ -108,7 +108,7 @@ class CP_Mdynamic extends base_model
      * 'lname' => 'sukhia',
      * 'img' => '54545454545.jpg',
      * );
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->delete($table,$wherefield,$con);
      * or
      * $dynamicList=$dynamicHandle->delete($table);
@@ -143,7 +143,7 @@ class CP_Mdynamic extends base_model
      * 'fname' => 'Dipesh',
      * 'img' => '54545454545.jpg',
      * );
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->select($table,$wherefield,$fatchfield,$con);
      * or
      * $dynamicList=$dynamicHandle->select($table);
@@ -178,7 +178,7 @@ class CP_Mdynamic extends base_model
      * 'fname' => 'dipesh',
      * 'lname' => 'sukhia',
      * );
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->count($table,$wherefield,$con);
      * or
      * $dynamicList=$dynamicHandle->count($table);
@@ -215,7 +215,7 @@ class CP_Mdynamic extends base_model
      * 'fname' => 'Dipesh',
      * 'img' => '54545454545.jpg',
      * );
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->distinct($table,$wherefield,$fatchfield,$con);
      * or
      * $dynamicList=$dynamicHandle->distinct($table);
@@ -245,7 +245,7 @@ class CP_Mdynamic extends base_model
      * Dynamic Drop Table
      ********************************************************************
      * $table = 'helloworld';
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->deletetable($table);
      */
     public function deletetable($table)
@@ -259,7 +259,7 @@ class CP_Mdynamic extends base_model
     /*
      * Dynamic Truncate Table
      *********************************************************************                $table = 'helloworld';
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->emptytable($table);
      */
     public function emptytable($table)
@@ -274,7 +274,7 @@ class CP_Mdynamic extends base_model
      * Dynamic Rename Table
      **********************************************************************
      * $table = 'helloworld';
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->renametable($table,$name);
      */
     public function renametable($table, $name)
@@ -298,7 +298,7 @@ class CP_Mdynamic extends base_model
      * 'table2' => "f21",
      * );
      * $type="IJ";
-     * $dynamicHandle=new CP_Mdynamic();
+     * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->sqljoin($fatchfield,$compare,$type);
      * var_dump($dynamicList);
      *

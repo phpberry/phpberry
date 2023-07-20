@@ -36,12 +36,12 @@ $fatchfield = [
 $wherefield = [
     'id' => 15,
 ];
-$dynamicHandle = new CP_Mdynamic();
+$dynamicHandle = new CpMDynamic();
 
 $dynamicList = $dynamicHandle->select($table);
 var_dump($dynamicList);
 
-$jsonHandle = new CP_Ljson();
+$jsonHandle = new CpLJson();
 $jsonList = $jsonHandle->Tojson($dynamicList);
 var_dump($jsonList);
 
@@ -63,7 +63,7 @@ var_dump($jsonobjList);
       'table1' => "f11",
       'table2' => "f21",
   );
-  $dynamicHandle=new CP_Mdynamic();
+  $dynamicHandle=new CpMDynamic();
   $dynamicList=$dynamicHandle->join($fatchfield,$compare);*/
 $table = 'helloworld';
 $con = 'OR';
@@ -71,7 +71,7 @@ $wherefield = [
     'fname' => 'dipesh',
     'lname' => 'sukhia',
 ];
-$dynamicHandle = new CP_Mdynamic();
+$dynamicHandle = new CpMDynamic();
 $dynamicList = $dynamicHandle->count($table, $wherefield, $con);
 var_dump($dynamicList);
 ?>

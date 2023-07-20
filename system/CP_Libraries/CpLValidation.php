@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
 
-class CP_Lvalidation
+class CpLValidation
 {
     public function required($string)
     {

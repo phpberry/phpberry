@@ -15,12 +15,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
  * $message = "Thank you for requesting this File ^^";
  * $mail->mail($to, $from, $subject, $message, $file);
  */
-interface iMail
-{
-    public function mail($to, $from, $subject, $message, $file = ''): void;
-}
-
-final class CP_LcMail implements iMail
+final class CpLcMail implements IMail
 {
     private $newline;
 

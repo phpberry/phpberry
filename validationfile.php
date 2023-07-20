@@ -12,7 +12,7 @@ require 'config/bootstrap.php';
 </head>
 <body>
 <?php
-$valHandle = new CP_Lvalidation();
+$valHandle = new CpLValidation();
 
 $str = $valHandle->required('hjh');
 echo $str;

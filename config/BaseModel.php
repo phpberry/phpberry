@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
 
-class base_model extends Database
+class BaseModel extends Database
 {
     public function __construct()
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class MY_Mpage extends base_model
+class MyMPage extends BaseModel
 {
     public function __construct()
     {

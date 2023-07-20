@@ -17,7 +17,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
 });
 </script>';
-$secHandle = new CP_Lsecurity();
+$secHandle = new CpLSecurity();
 $result = $secHandle->script($str);
 echo $result;
 ?>

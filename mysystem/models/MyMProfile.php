@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class MY_Mprofile extends base_model
+class MyMProfile extends BaseModel
 {
     public function __construct()
     {

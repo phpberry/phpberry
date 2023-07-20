@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
 
-class CP_Lupload_file
+class CpLUploadFile
 {
     public function upload_file($config = [])
     {

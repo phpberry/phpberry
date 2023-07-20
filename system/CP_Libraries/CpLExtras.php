@@ -6,7 +6,7 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
 
-class CP_Lextras
+class CpLExtras
 {
     public function str2hex($str)
     {

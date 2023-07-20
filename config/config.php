@@ -12,20 +12,22 @@ date_default_timezone_set('Asia/Kolkata');
 /*
  * COMPRESS HTML OUTPUT
  */
-if (false) {
+$isCompressOutput = false;
+if ($isCompressOutput) {
     require_once CP_HOOK_PATH . 'CP_Hcompress.php';
 }
 /*
  * PHP to ASP.NET WITH ERROR REPORTING
  */
-if (false) {
+$isPhpToAspError = false;
+if ($isPhpToAspError) {
     header('X-Powered-By: ASP.NET');
 }
 /*
  * EXECUTION TIME
  */
-if (false) {
-    $second = 5;
+$isExecutionTIme = false;
+if ($isExecutionTIme) {
     require_once CP_HOOK_PATH . 'CP_Hexecutionconfig.php';
 }
 /*

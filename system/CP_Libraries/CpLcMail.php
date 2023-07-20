@@ -17,21 +17,21 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
  */
 final class CpLcMail implements IMail
 {
-    private $newline;
+    private mixed $newline;
 
     public function __construct($nl = "\n")
     {
         $this->newline = $nl;
     }
 
-    public function mail($to, $from, $subject, $message, $file = '')
+    public function mail($to, $from, $subject, $message, $file = ''): void
     {
         if ($file !== '') {
             $fn = explode('/', $file);
             $filename = $fn[sizeof($fn) - 1];
             $attachment = chunk_split(base64_encode(file_get_contents($file)));
         }
-        $uid = md5(uniqid(time()));
+        $uid = md5(uniqid((string) time()));
         $header = "From: {$from}" . $this->newline;
         $header .= "Reply-To: {$from}" . $this->newline;
         $header .= 'MIME-Version: 1.0' . $this->newline;
@@ -52,6 +52,6 @@ final class CpLcMail implements IMail
         $header .= '--' . $uid . '--';
         $subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 
-        return mail($to, $subject, $message, $header) ? true : false;
+        mail($to, $subject, $message, $header);
     }
 }

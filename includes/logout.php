@@ -1,7 +1,10 @@
 <?php
+
+declare(strict_types=1);
+
 session_start();
 require '../config/bootstrap.php';
-$username = $_SESSION["username"];
+$username = $_SESSION['username'];
 date_default_timezone_set('Asia/Kolkata');
 $date = new DateTime();
 $modified_access = $date->format('Y-m-d H:i:s');
@@ -12,6 +15,5 @@ try {
     echo $e->getMessage();
 }
 session_destroy();
-header("Location: ../");
-exit();
-?>
+header('Location: ../');
+exit;

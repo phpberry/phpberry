@@ -1,11 +1,13 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 
 class CP_Lvalidation
 {
-
     public function required($string)
     {
         return empty($string) ? false : true;
@@ -48,12 +50,12 @@ class CP_Lvalidation
 
     public function minlength($string, $min)
     {
-        return (strlen($string) >= $min) ? true : false;
+        return strlen($string) >= $min ? true : false;
     }
 
     public function maxlength($string, $max)
     {
-        return (strlen($string) <= $max) ? true : false;
+        return strlen($string) <= $max ? true : false;
     }
 
     public function length_range($string, $min, $max)
@@ -63,7 +65,6 @@ class CP_Lvalidation
 
     public function equalTo($string1, $string2)
     {
-        return (strcmp($string1, $string2) == 0) ? true : false;
+        return strcmp($string1, $string2) === 0 ? true : false;
     }
-
 }

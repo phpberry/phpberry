@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require 'config/bootstrap.php';
 
 echo 'BASE_PATH : ' . BASE_PATH . '<br>';
@@ -20,7 +22,4 @@ echo 'DIR_PATH : ' . DIR_PATH . '<br>';
 echo 'DIR_URL : ' . DIR_URL . '<br>';
 echo '<hr>';
 
-
 echo '<hr>';
-
-?>

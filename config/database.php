@@ -1,11 +1,13 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 
 class Database extends PDO
 {
-
     private $engine;
     private $host;
     private $database;
@@ -14,13 +16,13 @@ class Database extends PDO
 
     public function __construct()
     {
-        $this->engine = "mysql";
-        $this->host = "localhost";
-        $this->database = "phpberry";
-        $this->username = "root";
-        $this->password = "";
+        $this->engine = 'mysql';
+        $this->host = 'localhost';
+        $this->database = 'phpberry';
+        $this->username = 'root';
+        $this->password = '';
 
-        $dsn = $this->engine . ":host=" . $this->host . ";dbname=" . $this->database;
+        $dsn = $this->engine . ':host=' . $this->host . ';dbname=' . $this->database;
         parent::__construct($dsn, $this->username, $this->password);
     }
 }

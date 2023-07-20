@@ -1,11 +1,13 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 
 class CP_Lpagination
 {
-
     public function paginate_data($page, $total_results, $per_page)
     {
         if ($page) {
@@ -23,15 +25,15 @@ class CP_Lpagination
             $end = $per_page;
         }
         $tpages = $total_pages;
-        return array($show_page, $tpages, $total_pages, $start, $end);
+        return [$show_page, $tpages, $total_pages, $start, $end];
     }
 
     public function paginate($reload, $page, $tpages, $get = false)
     {
         $delimiter = $get ? '&' : '?';
         $adjacents = 2;
-        $prevlabel = "&lsaquo; Prev";
-        $nextlabel = "Next &rsaquo;";
+        $prevlabel = '&lsaquo; Prev';
+        $nextlabel = 'Next &rsaquo;';
 
         $out = "<style type='text/css'>
             .pagination {
@@ -103,37 +105,37 @@ class CP_Lpagination
             </style>";
         $out .= '<div class="pagination"><ul>';
         // previous
-        if ($page == 1) {
-            $out .= "<li><span>" . $prevlabel . "</span><li>\n";
-        } elseif ($page == 2) {
-            $out .= "<li><a  href=\"" . $reload . "\">" . $prevlabel . "</a>\n</li>";
-        } elseif ($page == 3) {
-            $out .= "<li><a  href=\"" . $reload . $delimiter . "page=" . ($page - 1) . "\">" . $prevlabel . "</a>\n</li>";
+        if ($page === 1) {
+            $out .= '<li><span>' . $prevlabel . "</span><li>\n";
+        } elseif ($page === 2) {
+            $out .= '<li><a  href="' . $reload . '">' . $prevlabel . "</a>\n</li>";
+        } elseif ($page === 3) {
+            $out .= '<li><a  href="' . $reload . $delimiter . 'page=' . ($page - 1) . '">' . $prevlabel . "</a>\n</li>";
         } else {
-            $out .= "<li><a  href=\"" . $reload . $delimiter . "page=" . ($page - 1) . "\">" . $prevlabel . "</a>\n</li>";
-            $out .= "<li><a  href=\"" . $reload . $delimiter . "page=1\">1</a>\n</li>";
+            $out .= '<li><a  href="' . $reload . $delimiter . 'page=' . ($page - 1) . '">' . $prevlabel . "</a>\n</li>";
+            $out .= '<li><a  href="' . $reload . $delimiter . "page=1\">1</a>\n</li>";
         }
-        $pmin = ($page > $adjacents) ? ($page - $adjacents) : 1;
-        $pmax = ($page < ($tpages - $adjacents)) ? ($page + $adjacents) : $tpages;
+        $pmin = $page > $adjacents ? $page - $adjacents : 1;
+        $pmax = $page < $tpages - $adjacents ? $page + $adjacents : $tpages;
         for ($i = $pmin; $i <= $pmax; $i++) {
-            if ($i == $page) {
+            if ($i === $page) {
                 $out .= "<li  class=\"active\"><a href=''>" . $i . "</a></li>\n";
-            } elseif ($i == 1) {
-                $out .= "<li><a  href=\"" . $reload . "\">" . $i . "</a>\n</li>";
+            } elseif ($i === 1) {
+                $out .= '<li><a  href="' . $reload . '">' . $i . "</a>\n</li>";
             } else {
-                $out .= "<li><a  href=\"" . $reload . $delimiter . "page=" . $i . "\">" . $i . "</a>\n</li>";
+                $out .= '<li><a  href="' . $reload . $delimiter . 'page=' . $i . '">' . $i . "</a>\n</li>";
             }
         }
-        if ($page < ($tpages - $adjacents)) {
-            $out .= "<li><a href=\"" . $reload . $delimiter . "page=" . $tpages . "\">" . $tpages . "</a>\n</li>";
+        if ($page < $tpages - $adjacents) {
+            $out .= '<li><a href="' . $reload . $delimiter . 'page=' . $tpages . '">' . $tpages . "</a>\n</li>";
         }
         // next
         if ($page < $tpages) {
-            $out .= "<li><a  href=\"" . $reload . $delimiter . "page=" . ($page + 1) . "\">" . $nextlabel . "</a>\n</li>";
+            $out .= '<li><a  href="' . $reload . $delimiter . 'page=' . ($page + 1) . '">' . $nextlabel . "</a>\n</li>";
         } else {
-            $out .= "<li><span>" . $nextlabel . "</span></li>\n";
+            $out .= '<li><span>' . $nextlabel . "</span></li>\n";
         }
-        $out .= "</ul></div>";
+        $out .= '</ul></div>';
         return $out;
     }
 }

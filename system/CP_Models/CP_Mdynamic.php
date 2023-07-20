@@ -1,6 +1,9 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 
 class CP_Mdynamic extends base_model
@@ -9,10 +12,10 @@ class CP_Mdynamic extends base_model
     {
         parent::__construct();
     }
-    /*******************************************************************
+    /*
      * Dynamic Model Start
-     ********************************************************************/
-    /*******************************************************************
+     */
+    /*
      * Dynamic Insert
      ********************************************************************
      * $table = 'helloworld';
@@ -23,25 +26,24 @@ class CP_Mdynamic extends base_model
      * );
      * $dynamicHandle=new CP_Mdynamic();
      * $dynamicList=$dynamicHandle->insert($table,$fieldvalue,true);
-     ********************************************************************/
+     */
     public function insert($table, $fieldvalue, $id = false)
     {
-        $table = "`" . $table . "`";
-        $fileds = "`" . implode("`,`", array_keys($fieldvalue)) . "`";
-        $values = ":" . implode(",:", array_keys($fieldvalue));
-        $sql = "INSERT INTO " . $table . " (" . $fileds . ") VALUES (" . $values . ")";
+        $table = '`' . $table . '`';
+        $fileds = '`' . implode('`,`', array_keys($fieldvalue)) . '`';
+        $values = ':' . implode(',:', array_keys($fieldvalue));
+        $sql = 'INSERT INTO ' . $table . ' (' . $fileds . ') VALUES (' . $values . ')';
         $sth = $this->prepare($sql);
         foreach ($fieldvalue as $filed => &$value) {
-            $sth->bindParam(":$filed", $value);
+            $sth->bindParam(":{$filed}", $value);
         }
         if ($id) {
             return $sth->execute() ? $this->lastInsertId() : false;
-        } else {
-            return $sth->execute();
         }
+        return $sth->execute();
     }
 
-    /********************************************************************
+    /*
      * Dynamic Update
      ********************************************************************
      * $table = 'helloworld';
@@ -59,44 +61,44 @@ class CP_Mdynamic extends base_model
      * $dynamicList=$dynamicHandle->update($table,$updatefield,$wherefield,$con);
      * or
      * $dynamicList=$dynamicHandle->update($table,$updatefield);
-     ********************************************************************/
-    public function update($table, $updatefield, $wherefield = array(), $con = 'AND')
+     */
+    public function update($table, $updatefield, $wherefield = [], $con = 'AND')
     {
-        $table = "`" . $table . "`";
-        $fileds = "";
-        $wherefileds = "";
+        $table = '`' . $table . '`';
+        $fileds = '';
+        $wherefileds = '';
         foreach ($updatefield as $filed => $value) {
-            $fileds .= "`$filed`=:$filed,";
+            $fileds .= "`{$filed}`=:{$filed},";
         }
-        $fileds = substr_replace($fileds, "", -1);
-        if (!empty($wherefield)) {
+        $fileds = substr_replace($fileds, '', -1);
+        if (! empty($wherefield)) {
             $i = 0;
             foreach ($wherefield as $filed => $value) {
                 $i++;
-                $wherefileds .= "`$filed`=:$filed$i $con ";
+                $wherefileds .= "`{$filed}`=:{$filed}{$i} {$con} ";
             }
-            if ($con == 'AND') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -5);
-            } elseif ($con == 'OR') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -4);
+            if ($con === 'AND') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -5);
+            } elseif ($con === 'OR') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -4);
             }
         }
-        $sql = "UPDATE " . $table . " SET " . $fileds . " " . $wherefileds;
+        $sql = 'UPDATE ' . $table . ' SET ' . $fileds . ' ' . $wherefileds;
         $sth = $this->prepare($sql);
         foreach ($updatefield as $filed => &$value) {
-            $sth->bindParam(":$filed", $value);
+            $sth->bindParam(":{$filed}", $value);
         }
-        if (!empty($wherefield)) {
+        if (! empty($wherefield)) {
             $i = 0;
             foreach ($wherefield as $filed => &$value) {
                 $i++;
-                $sth->bindParam(":$filed$i", $value);
+                $sth->bindParam(":{$filed}{$i}", $value);
             }
         }
         return $sth->execute();
     }
 
-    /********************************************************************
+    /*
      * Dynamic Delete
      *********************************************************************
      * $table = 'helloworld';
@@ -110,26 +112,26 @@ class CP_Mdynamic extends base_model
      * $dynamicList=$dynamicHandle->delete($table,$wherefield,$con);
      * or
      * $dynamicList=$dynamicHandle->delete($table);
-     ********************************************************************/
-    public function delete($table, $wherefield = array(), $con = 'AND')
+     */
+    public function delete($table, $wherefield = [], $con = 'AND')
     {
-        $wherefileds = "";
-        if (!empty($wherefield)) {
+        $wherefileds = '';
+        if (! empty($wherefield)) {
             foreach ($wherefield as $filed => $value) {
-                $wherefileds .= "`$filed`='$value' $con ";
+                $wherefileds .= "`{$filed}`='{$value}' {$con} ";
             }
-            if ($con == 'AND') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -5);
-            } elseif ($con == 'OR') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -4);
+            if ($con === 'AND') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -5);
+            } elseif ($con === 'OR') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -4);
             }
         }
-        $sql = "DELETE FROM " . $table . " " . $wherefileds;
+        $sql = 'DELETE FROM ' . $table . ' ' . $wherefileds;
         $sth = $this->exec($sql);
         return $sth ? true : false;
     }
 
-    /********************************************************************
+    /*
      * Dynamic Select
      ********************************************************************                $table = 'helloworld';
      * $con = 'OR';
@@ -145,29 +147,29 @@ class CP_Mdynamic extends base_model
      * $dynamicList=$dynamicHandle->select($table,$wherefield,$fatchfield,$con);
      * or
      * $dynamicList=$dynamicHandle->select($table);
-     ********************************************************************/
-    public function select($table, $wherefield = array(), $fatchfield = array(), $con = 'AND')
+     */
+    public function select($table, $wherefield = [], $fatchfield = [], $con = 'AND')
     {
-        $table = "`" . $table . "`";
-        $fileds = (!empty($fatchfield) ? "`" . implode("`,`", $fatchfield) . "`" : "*");
-        $wherefileds = "";
-        if (!empty($wherefield)) {
+        $table = '`' . $table . '`';
+        $fileds = (! empty($fatchfield) ? '`' . implode('`,`', $fatchfield) . '`' : '*');
+        $wherefileds = '';
+        if (! empty($wherefield)) {
             foreach ($wherefield as $filed => $value) {
-                $wherefileds .= "`$filed`='$value' $con ";
+                $wherefileds .= "`{$filed}`='{$value}' {$con} ";
             }
-            if ($con == 'AND') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -5);
-            } elseif ($con == 'OR') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -4);
+            if ($con === 'AND') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -5);
+            } elseif ($con === 'OR') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -4);
             }
         }
-        $sql = "SELECT " . $fileds . " FROM " . $table . " " . $wherefileds;
+        $sql = 'SELECT ' . $fileds . ' FROM ' . $table . ' ' . $wherefileds;
         $sth = $this->query($sql);
         $sth->setFetchMode(PDO::FETCH_OBJ);
         return $sth->fetchAll();
     }
 
-    /*********************************************************************
+    /*
      * Dynamic Count
      **********************************************************************
      * $table = 'helloworld';
@@ -180,27 +182,27 @@ class CP_Mdynamic extends base_model
      * $dynamicList=$dynamicHandle->count($table,$wherefield,$con);
      * or
      * $dynamicList=$dynamicHandle->count($table);
-     ********************************************************************/
-    public function count($table, $wherefield = array(), $con = 'AND')
+     */
+    public function count($table, $wherefield = [], $con = 'AND')
     {
-        $table = "`" . $table . "`";
-        $wherefileds = "";
-        if (!empty($wherefield)) {
+        $table = '`' . $table . '`';
+        $wherefileds = '';
+        if (! empty($wherefield)) {
             foreach ($wherefield as $filed => $value) {
-                $wherefileds .= "`$filed`='$value' $con ";
+                $wherefileds .= "`{$filed}`='{$value}' {$con} ";
             }
-            if ($con == 'AND') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -5);
-            } elseif ($con == 'OR') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -4);
+            if ($con === 'AND') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -5);
+            } elseif ($con === 'OR') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -4);
             }
         }
-        $sql = "SELECT COUNT( * ) FROM " . $table . " " . $wherefileds;
+        $sql = 'SELECT COUNT( * ) FROM ' . $table . ' ' . $wherefileds;
         $sth = $this->query($sql);
         return $sth->fetchColumn();
     }
 
-    /*********************************************************************
+    /*
      * Dynamic distinct
      **********************************************************************
      * $table = 'helloworld';
@@ -217,74 +219,74 @@ class CP_Mdynamic extends base_model
      * $dynamicList=$dynamicHandle->distinct($table,$wherefield,$fatchfield,$con);
      * or
      * $dynamicList=$dynamicHandle->distinct($table);
-     ********************************************************************/
-    public function distinct($table, $wherefield = array(), $fatchfield = array(), $con = 'AND')
+     */
+    public function distinct($table, $wherefield = [], $fatchfield = [], $con = 'AND')
     {
-        $table = "`" . $table . "`";
-        $fileds = (!empty($fatchfield) ? "`" . implode("`,`", $fatchfield) . "`" : "*");
-        $wherefileds = "";
-        if (!empty($wherefield)) {
+        $table = '`' . $table . '`';
+        $fileds = (! empty($fatchfield) ? '`' . implode('`,`', $fatchfield) . '`' : '*');
+        $wherefileds = '';
+        if (! empty($wherefield)) {
             foreach ($wherefield as $filed => $value) {
-                $wherefileds .= "`$filed`='$value' $con ";
+                $wherefileds .= "`{$filed}`='{$value}' {$con} ";
             }
-            if ($con == 'AND') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -5);
-            } elseif ($con == 'OR') {
-                $wherefileds = 'WHERE ' . substr_replace($wherefileds, "", -4);
+            if ($con === 'AND') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -5);
+            } elseif ($con === 'OR') {
+                $wherefileds = 'WHERE ' . substr_replace($wherefileds, '', -4);
             }
         }
-        $sql = "SELECT DISTINCT " . $fileds . " FROM " . $table . " " . $wherefileds;
+        $sql = 'SELECT DISTINCT ' . $fileds . ' FROM ' . $table . ' ' . $wherefileds;
         $sth = $this->query($sql);
         $sth->setFetchMode(PDO::FETCH_OBJ);
         return $sth->fetchAll();
     }
 
-    /********************************************************************
+    /*
      * Dynamic Drop Table
      ********************************************************************
      * $table = 'helloworld';
      * $dynamicHandle=new CP_Mdynamic();
      * $dynamicList=$dynamicHandle->deletetable($table);
-     ********************************************************************/
+     */
     public function deletetable($table)
     {
-        $table = "`" . $table . "`";
-        $sql = "DROP TABLE " . $table;
+        $table = '`' . $table . '`';
+        $sql = 'DROP TABLE ' . $table;
         $sth = $this->exec($sql);
         return $sth ? true : false;
     }
 
-    /********************************************************************
+    /*
      * Dynamic Truncate Table
      *********************************************************************                $table = 'helloworld';
      * $dynamicHandle=new CP_Mdynamic();
      * $dynamicList=$dynamicHandle->emptytable($table);
-     ********************************************************************/
+     */
     public function emptytable($table)
     {
-        $table = "`" . $table . "`";
-        $sql = "TRUNCATE TABLE " . $table;
+        $table = '`' . $table . '`';
+        $sql = 'TRUNCATE TABLE ' . $table;
         $sth = $this->exec($sql);
         return $sth ? true : false;
     }
 
-    /*********************************************************************
+    /*
      * Dynamic Rename Table
      **********************************************************************
      * $table = 'helloworld';
      * $dynamicHandle=new CP_Mdynamic();
      * $dynamicList=$dynamicHandle->renametable($table,$name);
-     ********************************************************************/
+     */
     public function renametable($table, $name)
     {
-        $table = "`" . $table . "`";
-        $name = "`" . $name . "`";
-        $sql = "RENAME TABLE " . $table . " TO " . $name;
+        $table = '`' . $table . '`';
+        $name = '`' . $name . '`';
+        $sql = 'RENAME TABLE ' . $table . ' TO ' . $name;
         $sth = $this->exec($sql);
         return $sth ? true : false;
     }
 
-    /*********************************************************************
+    /*
      * Dynamic INNER JOIN
      *********************************************************************
      * $fatchfield = array(
@@ -301,35 +303,33 @@ class CP_Mdynamic extends base_model
      * var_dump($dynamicList);
      *
      * $type are IJ =INNER JOIN , LOJ = LEFT OUTER JOIN,ROJ = RIGHT OUTER JOIN,FOJ = FULL OUTER JOIN
-     ********************************************************************/
-    public function sqljoin($fatchfield = array(), $compare, $type = "IJ")
+     */
+    public function sqljoin($fatchfield, $compare, $type = 'IJ')
     {
-        if (!empty($fatchfield)) {
-            $fileds = "";
+        if (! empty($fatchfield)) {
+            $fileds = '';
             foreach ($fatchfield as $table => $tabfiled) {
-                $fileds .= $table . "." . implode(", $table.", array_values($tabfiled)) . ", ";
+                $fileds .= $table . '.' . implode(", {$table}.", array_values($tabfiled)) . ', ';
             }
-            $fileds = substr_replace($fileds, "", -2);
+            $fileds = substr_replace($fileds, '', -2);
         } else {
             $fileds = '*';
         }
-        if ($type == "IJ") {
-            $join = "INNER JOIN";
-        } elseif ($type == "LOJ") {
-            $join = "LEFT OUTER JOIN";
-        } elseif ($type == "ROJ") {
-            $join = "RIGHT OUTER JOIN";
-        } elseif ($type == "FOJ") {
-            $join = "FULL OUTER JOIN";
+        if ($type === 'IJ') {
+            $join = 'INNER JOIN';
+        } elseif ($type === 'LOJ') {
+            $join = 'LEFT OUTER JOIN';
+        } elseif ($type === 'ROJ') {
+            $join = 'RIGHT OUTER JOIN';
+        } elseif ($type === 'FOJ') {
+            $join = 'FULL OUTER JOIN';
         }
-        $sql = "SELECT " . $fileds . " FROM " . array_keys($compare)[0] . " " . $join . " " . array_keys($compare)[1] . " ON " . array_keys($compare)[0] . "." . array_values($compare)[0] . " = " . array_keys($compare)[1] . "." . array_values($compare)[1];
+        $sql = 'SELECT ' . $fileds . ' FROM ' . array_keys($compare)[0] . ' ' . $join . ' ' . array_keys($compare)[1] . ' ON ' . array_keys($compare)[0] . '.' . array_values($compare)[0] . ' = ' . array_keys($compare)[1] . '.' . array_values($compare)[1];
         $sth = $this->query($sql);
         $sth->setFetchMode(PDO::FETCH_OBJ);
         return $sth->fetchAll();
     }
-    /*********************************************************************
+    /*
      * Dynamic Model End
-     *********************************************************************/
+     */
 }
-
-?>

@@ -1,6 +1,9 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 ?>
 <script type="text/javascript">
@@ -25,11 +28,11 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
         if (event.ctrlKey && (event.keyCode == 85 || event.keyCode == 83)) {
             event.preventDefault();
         }
-        <?php //if($print){ ?>
+        <?php //if($print){?>
         /*    if (event.ctrlKey && (event.keyCode == 80)) {                
                     event.preventDefault();                
             }*/
-        <?php //} ?>
+        <?php //}?>
     });
     console.log("%cStop!", "color: #FF0000; font-size:75px; font-family: serif;font-weight: bold;");
     console.log("%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a feature or 'hack' someone's account, it is a scam and will give them access to your account.", "color: #008000; font-size:20px;font-family: monospace;font-weight: bold;");

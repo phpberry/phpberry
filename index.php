@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 require 'config/bootstrap.php';
 ?>
 <!DOCTYPE html>
@@ -6,7 +9,7 @@ require 'config/bootstrap.php';
 <head>
     <?php
     require BASE_PATH . 'config/meta.php';
-    ?>
+?>
 </head>
 <body>
 <img id="CPcaptcha" src="<?php echo HOOKS_URL; ?>captcha"/>
@@ -23,13 +26,13 @@ echo segment(0);
 
 $table = 'helloworld';
 $con = 'OR';
-$fatchfield = array(
+$fatchfield = [
     'fname',
     'lname',
-);
-$wherefield = array(
-    'id' => 15
-);
+];
+$wherefield = [
+    'id' => 15,
+];
 $dynamicHandle = new CP_Mdynamic();
 
 $dynamicList = $dynamicHandle->select($table);
@@ -61,10 +64,10 @@ var_dump($jsonobjList);
   $dynamicList=$dynamicHandle->join($fatchfield,$compare);*/
 $table = 'helloworld';
 $con = 'OR';
-$wherefield = array(
+$wherefield = [
     'fname' => 'dipesh',
     'lname' => 'sukhia',
-);
+];
 $dynamicHandle = new CP_Mdynamic();
 $dynamicList = $dynamicHandle->count($table, $wherefield, $con);
 var_dump($dynamicList);
@@ -72,7 +75,7 @@ var_dump($dynamicList);
 <?php
 require HOOKS_PATH . 'ZoomInOut.php';
 
-echo time() . round(microtime(TRUE));
+echo time() . round(microtime(true));
 
 ?>
 <button onclick="toggleFullScreen()">Zoom in Zoom Out</button>

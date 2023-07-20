@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require 'config/bootstrap.php';
 
 echo 'BASE_PATH : ' . BASE_PATH . '<br>';
@@ -10,7 +12,7 @@ echo 'SELF_URL : ' . SELF_URL . '<br>';
 echo 'ERROR_LOG_PATH : ' . ERROR_LOG_PATH . '<br>';
 echo 'CP_MODELS_PATH : ' . CP_MODELS_PATH . '<br>';
 echo 'CP_LIBS_PATH : ' . CP_LIBS_PATH . '<br>';
-echo 'CP_HOOk_PATH : ' . CP_HOOk_PATH . '<br>';
+echo 'CP_HOOK_PATH : ' . CP_HOOK_PATH . '<br>';
 echo 'MODELS_PATH : ' . MODELS_PATH . '<br>';
 echo 'LIBS_PATH : ' . LIBS_PATH . '<br>';
 echo 'HOOKS_URL : ' . HOOKS_URL . '<br>';
@@ -20,7 +22,4 @@ echo 'DIR_PATH : ' . DIR_PATH . '<br>';
 echo 'DIR_URL : ' . DIR_URL . '<br>';
 echo '<hr>';
 
-
 echo '<hr>';
-
-?>

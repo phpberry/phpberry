@@ -1,22 +1,24 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 
-class CP_Lextras
+class CpLExtras
 {
-
-    public function str2hex($str)
+    public function str2hex(string $str): mixed
     {
         return array_shift(unpack('H*', $str));
     }
 
-    public function hex2str($hex)
+    public function hex2str(string $hex): string
     {
         return pack('H*', $hex);
     }
 
-    public function unique_code($length = 6)
+    public function uniqueCode(int $length = 6): string
     {
         $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $charactersLength = count($characters) - 1;
@@ -27,23 +29,24 @@ class CP_Lextras
         return $randomString;
     }
 
-    public function get_client_ip()
+    public function getClientIp(): false|array|string
     {
         $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
+        if (getenv('HTTP_CLIENT_IP')) {
             $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if (getenv('HTTP_X_FORWARDED_FOR'))
+        } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
             $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if (getenv('HTTP_X_FORWARDED'))
+        } elseif (getenv('HTTP_X_FORWARDED')) {
             $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if (getenv('HTTP_FORWARDED_FOR'))
+        } elseif (getenv('HTTP_FORWARDED_FOR')) {
             $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if (getenv('HTTP_FORWARDED'))
+        } elseif (getenv('HTTP_FORWARDED')) {
             $ipaddress = getenv('HTTP_FORWARDED');
-        else if (getenv('REMOTE_ADDR'))
+        } elseif (getenv('REMOTE_ADDR')) {
             $ipaddress = getenv('REMOTE_ADDR');
-        else
+        } else {
             $ipaddress = 'UNKNOWN';
+        }
         return $ipaddress;
     }
 
@@ -51,5 +54,4 @@ class CP_Lextras
     {
         return $_SERVER['HTTP_USER_AGENT'];
     }
-
 }

@@ -1,6 +1,9 @@
 <?php
-if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
-    header("Location: 404");
+
+declare(strict_types=1);
+
+if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
+    header('Location: 404');
 }
 /*require HOOKS_PATH.'ZoomInOut.php';
 <button onclick="toggleFullScreen()">Zoom in Zoom Out</button> */

@@ -1,10 +1,14 @@
+<?php
+
+declare(strict_types=1);
+
+require 'config/bootstrap.php';
+// require 'config/seo.php';
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <?php
-    require 'config/bootstrap.php';
-    // require 'config/seo.php';  
-    ?>
+    <title>phpberry</title>
 </head>
 <body>
 <?php
@@ -13,7 +17,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
 });
 </script>';
-$secHandle = new CP_Lsecurity();
+$secHandle = new CpLSecurity();
 $result = $secHandle->script($str);
 echo $result;
 ?>

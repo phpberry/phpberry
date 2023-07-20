@@ -1,8 +1,23 @@
 {
   "name": "phpberry/phpberry",
-  "description": "a php framework",
   "type": "library",
+  "description": "a php framework",
+  "keywords": [
+    "php",
+    "framework",
+    "phplibrary"
+  ],
   "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-mcrypt": "*",
+    "ext-gd": "*"
+  },
+  "require-dev": {
+    "nunomaduro/phpinsights": "^2.8"
+  },
   "authors": [
     {
       "name": "Bhavin Gajjar",
@@ -15,6 +30,11 @@
       "role": "Developer"
     }
   ],
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
   "minimum-stability": "stable",
-  "require": {}
+  "prefer-stable": true
 }

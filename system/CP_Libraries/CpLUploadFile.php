@@ -8,7 +8,10 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
 
 class CpLUploadFile
 {
-    public function upload_file($config = [])
+    /**
+     * @param array $config
+     */
+    public function uploadFile(array $config = []): array|bool
     {
         // pass value
         /* $config = array(
@@ -22,7 +25,7 @@ class CpLUploadFile
              'foldername' => 'foldername',
          );
 
-         $result=$filrHandle->upload_file( $config );  */
+         $result=$fileHandle->uploadFile( $config );  */
         $result = [];
 
         $file = $config['file'];
@@ -32,7 +35,7 @@ class CpLUploadFile
         $minsize = $config['minsize'];
         $maxsize = $config['maxsize'];
         $format = $config['format'];
-        $foldername = $config['foldername'];
+        $folderName = $config['foldername'];
         $_FILES['fileToUpload']['name'] = $file;
 
         $minsize *= 1000; //kb
@@ -40,11 +43,11 @@ class CpLUploadFile
         if ($rename) {
             $_FILES['fileToUpload']['name'] = time() . round(microtime(true)) . '.' . strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
         }
-        if (! empty($foldername)) {
-            if (! is_dir(ASSETS_PATH . $foldername)) {
-                mkdir(ASSETS_PATH . $foldername, 0777, true);
+        if (! empty($folderName)) {
+            if (! is_dir(ASSETS_PATH . $folderName)) {
+                mkdir(ASSETS_PATH . $folderName, 0777, true);
             }
-            $target_dir = ASSETS_PATH . $foldername . '/';
+            $target_dir = ASSETS_PATH . $folderName . '/';
         } else {
             $target_dir = ASSETS_PATH;
         }
@@ -104,13 +107,17 @@ class CpLUploadFile
             $result['error'] = 'Sorry, there was an error to uploading your file.';
             return $result;
         }
+        return false;
     }
 
-    public function delete_file($file, $foldername = '')
+    /**
+     * @return array
+     */
+    public function deleteFile(string $file, string $folderName = ''): array
     {
         $result = [];
-        if (! empty($foldername)) {
-            $target_file = ASSETS_PATH . $foldername . '/' . $file;
+        if (! empty($folderName)) {
+            $target_file = ASSETS_PATH . $folderName . '/' . $file;
         } else {
             $target_file = ASSETS_PATH . $file;
         }
@@ -119,9 +126,9 @@ class CpLUploadFile
             $result['error'] = "Error deleting {$file}";
             return $result;
         }
-        if (! empty($foldername)) {
-            if (count(scandir(ASSETS_PATH . $foldername)) === 2) {
-                rmdir(ASSETS_PATH . $foldername);
+        if (! empty($folderName)) {
+            if (count(scandir(ASSETS_PATH . $folderName)) === 2) {
+                rmdir(ASSETS_PATH . $folderName);
             }
         }
         $result['result'] = true;

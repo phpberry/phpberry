@@ -42,7 +42,7 @@ $dynamicList = $dynamicHandle->select($table);
 var_dump($dynamicList);
 
 $jsonHandle = new CpLJson();
-$jsonList = $jsonHandle->Tojson($dynamicList);
+$jsonList = $jsonHandle->toJson($dynamicList);
 var_dump($jsonList);
 
 $jsonobjList = $jsonHandle->jsonToObject($jsonList);

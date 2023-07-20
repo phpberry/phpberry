@@ -8,7 +8,10 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
 
 class CpLPagination
 {
-    public function paginate_data($page, $total_results, $per_page)
+    /**
+     * @return array
+     */
+    public function paginateData(int $page, int $total_results, int $per_page): array
     {
         if ($page) {
             $show_page = $page;

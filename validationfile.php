@@ -26,7 +26,7 @@ echo $str;
 $str = $valHandle->numeric('123');
 echo $str;
 
-$str = $valHandle->alpha_space('asd kll ');
+$str = $valHandle->alphaSpace('asd kll ');
 echo $str;
 
 $str = $valHandle->email('dipesh.sukhia@gmail.com');
@@ -38,7 +38,7 @@ echo $str;
 $str = $valHandle->minlength('dipesh', 6);
 echo $str;
 
-$str = $valHandle->length_range('dipesh', 2, 6);
+$str = $valHandle->lengthRange('dipesh', 2, 6);
 echo $str;
 $str = $valHandle->equalTo('dipesh', 'dipesh');
 echo $str;

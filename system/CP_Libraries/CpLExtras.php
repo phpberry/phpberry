@@ -8,17 +8,17 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
 
 class CpLExtras
 {
-    public function str2hex($str)
+    public function str2hex(string $str): mixed
     {
         return array_shift(unpack('H*', $str));
     }
 
-    public function hex2str($hex)
+    public function hex2str(string $hex): string
     {
         return pack('H*', $hex);
     }
 
-    public function unique_code($length = 6)
+    public function uniqueCode(int $length = 6): string
     {
         $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $charactersLength = count($characters) - 1;
@@ -29,7 +29,7 @@ class CpLExtras
         return $randomString;
     }
 
-    public function get_client_ip()
+    public function getClientIp(): false|array|string
     {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP')) {

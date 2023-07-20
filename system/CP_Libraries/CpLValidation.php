@@ -8,63 +8,63 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
 
 class CpLValidation
 {
-    public function required($string)
+    public function required(string $string): bool
     {
-        return empty($string) ? false : true;
+        return ! empty($string);
     }
 
-    public function alpha($string)
+    public function alpha(string $string): bool
     {
-        return ctype_alpha($string) ? true : false;
+        return ctype_alpha($string);
     }
 
-    public function numeric($string)
+    public function numeric(string $string): bool
     {
-        return ctype_digit($string) ? true : false;
+        return ctype_digit($string);
     }
 
-    public function alphanumeric($string)
+    public function alphanumeric(string $string): bool
     {
-        return ctype_alnum($string) ? true : false;
+        return ctype_alnum($string);
     }
 
-    public function alpha_space($string)
+    public function alphaSpace(string $string): bool
     {
-        return preg_match('/^[\pL\s]+$/u', $string) ? true : false;
+        return (bool) preg_match('/^[\pL\s]+$/u', $string);
     }
 
-    public function email($string)
+    public function email(string $string): bool
     {
-        return filter_var($string, FILTER_VALIDATE_EMAIL) ? true : false;
+        return (bool) filter_var($string, FILTER_VALIDATE_EMAIL);
     }
 
-    public function ip($string)
+    public function ip(string $string): bool
     {
-        return filter_var($string, FILTER_VALIDATE_IP) ? true : false;
+        return (bool) filter_var($string, FILTER_VALIDATE_IP);
     }
 
-    public function url($string)
+    public function url(string $string): bool
     {
-        return filter_var($string, FILTER_VALIDATE_URL) ? true : false;
+        return (bool) filter_var($string, FILTER_VALIDATE_URL);
     }
 
-    public function minlength($string, $min)
+    public function minlength(string $string, int $min): bool
     {
-        return strlen($string) >= $min ? true : false;
+        return strlen($string) >= $min;
     }
 
-    public function maxlength($string, $max)
+    public function maxlength(string $string, int $max): bool
     {
-        return strlen($string) <= $max ? true : false;
+        return strlen($string) <= $max;
     }
 
-    public function length_range($string, $min, $max)
+    public function lengthRange(string $string, int $min, int $max): bool
     {
-        return ((strlen($string) >= $min) and (strlen($string) <= $max)) ? true : false;
+        return (strlen($string) >= $min) and (strlen($string) <= $max);
     }
 
-    public function equalTo($string1, $string2)
+    public function equalTo(string $string1, string $string2): bool
     {
-        return strcmp($string1, $string2) === 0 ? true : false;
+        return strcmp($string1, $string2) === 0;
     }
 }

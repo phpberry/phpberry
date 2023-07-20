@@ -269,10 +269,7 @@ class CpMDynamic extends BaseModel
      * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->deleteTable($table);
      */
-    /**
-     * @param $table
-     */
-    public function deleteTable($table): bool
+    public function deleteTable(string $table): bool
     {
         $table = '`' . $table . '`';
         $sql = 'DROP TABLE ' . $table;
@@ -287,10 +284,7 @@ class CpMDynamic extends BaseModel
      * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->emptyTable($table);
      */
-    /**
-     * @param $table
-     */
-    public function emptyTable($table): bool
+    public function emptyTable(string $table): bool
     {
         $table = '`' . $table . '`';
         $sql = 'TRUNCATE TABLE ' . $table;
@@ -305,11 +299,7 @@ class CpMDynamic extends BaseModel
      * $dynamicHandle=new CpMDynamic();
      * $dynamicList=$dynamicHandle->renameTable($table,$name);
      */
-    /**
-     * @param $table
-     * @param $name
-     */
-    public function renameTable($table, $name): bool
+    public function renameTable(string $table, string $name): bool
     {
         $table = '`' . $table . '`';
         $name = '`' . $name . '`';

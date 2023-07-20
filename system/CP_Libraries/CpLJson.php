@@ -8,28 +8,40 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
 
 class CpLJson
 {
-    public function Tojson($input)
+    public function toJson(mixed $input): false|string
     {
         return json_encode($input);
     }
 
-    public function jsonToArray($json)
+    /**
+     * @param $json
+     */
+    public function jsonToArray($json): mixed
     {
         return json_decode($json, true);
     }
 
-    public function jsonToObject($json)
+    /**
+     * @param $json
+     */
+    public function jsonToObject($json): mixed
     {
         return json_decode($json, false);
     }
 
-    public function objectToArray($object)
+    /**
+     * @param $object
+     */
+    public function objectToArray($object): mixed
     {
         return json_decode(json_encode($object), true);
     }
 
-    public function ArrayToObject($arry)
+    /**
+     * @param array $array
+     */
+    public function arrayToObject(array $array): mixed
     {
-        return json_decode(json_encode($arry), false);
+        return json_decode(json_encode($array), false);
     }
 }

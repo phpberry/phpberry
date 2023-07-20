@@ -16,7 +16,7 @@ $config = [
     'foldername' => 'img',
 ];
 $fileHandle = new CpLUploadFile();
-$result = $fileHandle->upload_file($config);
+$result = $fileHandle->uploadFile($config);
 if (! $result['result']) {
     echo $result['error'];
 } else {
@@ -24,7 +24,7 @@ if (! $result['result']) {
 }
 
 /*    $fileHandle=new CpLUploadFile();
-    $result=$fileHandle->delete_file( "14906708221490670822.jpg","img" );
+    $result=$fileHandle->deleteFile( "14906708221490670822.jpg","img" );
     if(!$result['result']){
         echo $result['error'];
     }else {

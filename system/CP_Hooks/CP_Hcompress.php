@@ -5,7 +5,7 @@ declare(strict_types=1);
 if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     header('Location: 404');
 }
-function sanitize_output($buffer)
+function sanitize_output($buffer): array|string|null
 {
     ini_set('pcre.recursion_limit', '16777');
     $re = '%# Collapse whitespace everywhere but in blacklisted elements.

@@ -27,11 +27,11 @@ class CpLPagination
             $start = 0;
             $end = $per_page;
         }
-        $tpages = $total_pages;
-        return [$show_page, $tpages, $total_pages, $start, $end];
+        $tPages = $total_pages;
+        return [$show_page, $tPages, $total_pages, $start, $end];
     }
 
-    public function paginate($reload, $page, $tpages, $get = false)
+    public function paginate($reload, $page, $tPages, $get = false)
     {
         $delimiter = $get ? '&' : '?';
         $adjacents = 2;
@@ -119,7 +119,7 @@ class CpLPagination
             $out .= '<li><a  href="' . $reload . $delimiter . "page=1\">1</a>\n</li>";
         }
         $pmin = $page > $adjacents ? $page - $adjacents : 1;
-        $pmax = $page < $tpages - $adjacents ? $page + $adjacents : $tpages;
+        $pmax = $page < $tPages - $adjacents ? $page + $adjacents : $tPages;
         for ($i = $pmin; $i <= $pmax; $i++) {
             if ($i === $page) {
                 $out .= "<li  class=\"active\"><a href=''>" . $i . "</a></li>\n";
@@ -129,11 +129,11 @@ class CpLPagination
                 $out .= '<li><a  href="' . $reload . $delimiter . 'page=' . $i . '">' . $i . "</a>\n</li>";
             }
         }
-        if ($page < $tpages - $adjacents) {
-            $out .= '<li><a href="' . $reload . $delimiter . 'page=' . $tpages . '">' . $tpages . "</a>\n</li>";
+        if ($page < $tPages - $adjacents) {
+            $out .= '<li><a href="' . $reload . $delimiter . 'page=' . $tPages . '">' . $tPages . "</a>\n</li>";
         }
         // next
-        if ($page < $tpages) {
+        if ($page < $tPages) {
             $out .= '<li><a  href="' . $reload . $delimiter . 'page=' . ($page + 1) . '">' . $nextlabel . "</a>\n</li>";
         } else {
             $out .= '<li><span>' . $nextlabel . "</span></li>\n";

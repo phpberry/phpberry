@@ -16,10 +16,10 @@ $page = $_GET['page'] ?? 0;
 $per_page = 10;
 $reload = basename($_SERVER['PHP_SELF'], '.php');
 
-$pageHandle = new MY_Mpage();
+$pageHandle = new MyMPage();
 $total_results = $pageHandle->countCountries();
 $paginateHandle = new CpLPagination();
-[$show_page, $tpages, $total_pages, $start, $end] = $paginateHandle->paginateData($page, $total_results, $per_page);
+[$show_page, $tPages, $total_pages, $start, $end] = $paginateHandle->paginateData($page, $total_results, $per_page);
 
 echo "<table class='table table-bordered'>";
 echo '<thead><tr><th>country code</th> <th>Country Name</th></tr></thead>';
@@ -32,8 +32,8 @@ foreach ($allCountries as $val) {
 }
 echo '</table>';
 if ($total_pages > 1) {
-    $pagemenu = $paginateHandle->paginate($reload, $show_page, $total_pages, $get = false);
-    echo $pagemenu;
+    $pageMenu = $paginateHandle->paginate($reload, $show_page, $total_pages, $get = false);
+    echo $pageMenu;
 }
 ?>
 </body>

@@ -19,13 +19,13 @@ if (basename($_SERVER['SCRIPT_NAME']) === basename(__FILE__)) {
     }
 
     addMultifordev(window, 'keyup keydown', function (event) {
-        if (event.ctrlKey && event.shiftKey && (event.keyCode == 73 || event.keyCode == 74)) {
+        if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) {
             event.preventDefault();
         }
-        if (event.keyCode == 123) {
+        if (event.keyCode === 123) {
             event.preventDefault();
         }
-        if (event.ctrlKey && (event.keyCode == 85 || event.keyCode == 83)) {
+        if (event.ctrlKey && (event.keyCode === 85 || event.keyCode === 83)) {
             event.preventDefault();
         }
         <?php //if($print){?>

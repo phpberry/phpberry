@@ -5,6 +5,7 @@
     require 'config/bootstrap.php';
     
     use App\Libraries\Pagination;
+    use App\Models\Page;
     // require 'config/seo.php';
     ?>
 </head>
@@ -14,7 +15,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 0;
 $per_page = 10;
 $reload = basename($_SERVER['PHP_SELF'], ".php");
 
-$pageHandle = new MY_Mpage();
+$pageHandle = new Page();
 $total_results = $pageHandle->countCountries();
 $paginateHandle = new Pagination();
 list($show_page, $tpages, $total_pages, $start, $end) = $paginateHandle->paginate_data($page, $total_results, $per_page);

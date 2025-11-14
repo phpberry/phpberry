@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 require 'config/bootstrap.php';
+
+use App\Libraries\UploadFile;
+
 $file = $_FILES["fileToUpload"]["name"];
 
 
@@ -16,7 +19,7 @@ $config = array(
     'format' => array("jpg", "png", "gif"),
     'foldername' => 'img',
 );
-$fileHandle = new CP_Lupload_file();
+$fileHandle = new UploadFile();
 $result = $fileHandle->upload_file($config);
 if (!$result['result']) {
     echo $result['error'];
@@ -24,7 +27,7 @@ if (!$result['result']) {
     echo $result['filename'];
 }
 
-/*    $fileHandle=new CP_Lupload_file();	
+/*    $fileHandle=new UploadFile();	
     $result=$fileHandle->delete_file( "14906708221490670822.jpg","img" );
     if(!$result['result']){
     	echo $result['error'];

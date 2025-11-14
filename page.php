@@ -3,6 +3,8 @@
 <head>
     <?php
     require 'config/bootstrap.php';
+    
+    use App\Libraries\Pagination;
     // require 'config/seo.php';
     ?>
 </head>
@@ -14,7 +16,7 @@ $reload = basename($_SERVER['PHP_SELF'], ".php");
 
 $pageHandle = new MY_Mpage();
 $total_results = $pageHandle->countCountries();
-$paginateHandle = new CP_Lpagination();
+$paginateHandle = new Pagination();
 list($show_page, $tpages, $total_pages, $start, $end) = $paginateHandle->paginate_data($page, $total_results, $per_page);
 
 echo "<table class='table table-bordered'>";

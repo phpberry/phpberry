@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-class MY_Mprofile extends base_model
+use App\Config\BaseModel;
+use PDO;
+
+class MY_Mprofile extends BaseModel
 {
 
     public function __construct()

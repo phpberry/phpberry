@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 require '../config/bootstrap.php';
+
+use App\Models\Dynamic;
+
 // require 'config/seo.php';
 $did = 2;
 /*  $bankHandle=new bank();
@@ -24,7 +27,7 @@ $wherefield = array(
     'fname' => 'Dipesh',
     'img' => '54545454545.jpg',
 );
-$dynamicHandle = new CP_Mdynamic();
+$dynamicHandle = new Dynamic();
 $dynamicList = $dynamicHandle->select($table);
 var_dump($dynamicList);
 

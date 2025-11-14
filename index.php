@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 require 'config/bootstrap.php';
+
+use App\Models\Dynamic;
+use App\Libraries\Json;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,12 +37,12 @@ $fatchfield = array(
 $wherefield = array(
     'id' => 15
 );
-$dynamicHandle = new CP_Mdynamic();
+$dynamicHandle = new Dynamic();
 
 $dynamicList = $dynamicHandle->select($table);
 var_dump($dynamicList);
 
-$jsonHandle = new CP_Ljson();
+$jsonHandle = new Json();
 $jsonList = $jsonHandle->Tojson($dynamicList);
 var_dump($jsonList);
 
@@ -60,7 +64,7 @@ var_dump($jsonobjList);
       'table1' => "f11",
       'table2' => "f21",
   );
-  $dynamicHandle=new CP_Mdynamic();
+  $dynamicHandle=new Dynamic();
   $dynamicList=$dynamicHandle->join($fatchfield,$compare);*/
 $table = 'helloworld';
 $con = 'OR';
@@ -68,7 +72,7 @@ $wherefield = array(
     'fname' => 'dipesh',
     'lname' => 'sukhia',
 );
-$dynamicHandle = new CP_Mdynamic();
+$dynamicHandle = new Dynamic();
 $dynamicList = $dynamicHandle->count($table, $wherefield, $con);
 var_dump($dynamicList);
 ?>

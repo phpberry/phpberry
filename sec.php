@@ -3,6 +3,8 @@
 <head>
     <?php
     require 'config/bootstrap.php';
+    
+    use App\Libraries\Security;
     // require 'config/seo.php';  
     ?>
 </head>
@@ -13,7 +15,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
 });
 </script>';
-$secHandle = new CP_Lsecurity();
+$secHandle = new Security();
 $result = $secHandle->script($str);
 echo $result;
 ?>

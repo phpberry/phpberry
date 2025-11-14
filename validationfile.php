@@ -3,12 +3,14 @@
 <head>
     <?php
     require 'config/bootstrap.php';
+    
+    use App\Libraries\Validation;
     // require 'config/seo.php';  
     ?>
 </head>
 <body>
 <?php
-$valHandle = new CP_Lvalidation();
+$valHandle = new Validation();
 
 $str = $valHandle->required('hjh');
 echo $str;

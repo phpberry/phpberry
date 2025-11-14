@@ -13,7 +13,8 @@ class Extras
 
     public function str2hex($str)
     {
-        return array_shift(unpack('H*', $str));
+        $unpacked = unpack('H*', $str);
+        return array_shift($unpacked);
     }
 
     public function hex2str($hex)

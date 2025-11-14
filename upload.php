@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 require 'config/bootstrap.php';
 $file = $_FILES["fileToUpload"]["name"];
 

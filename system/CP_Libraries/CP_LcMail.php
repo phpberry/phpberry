@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
     header("Location: 404");
 }
@@ -15,19 +18,19 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
  ***********************************************************************************************/
 interface iMail
 {
-    public function mail($to, $from, $subject, $message, $file = "");
+    public function mail(string $to, string $from, string $subject, string $message, string $file = ""): bool;
 }
 
 final class CP_LcMail implements iMail
 {
-    protected $newline;
+    protected string $newline;
 
-    public function __construct($nl = "\n")
+    public function __construct(string $nl = "\n")
     {
         $this->newline = $nl;
     }
 
-    public function mail($to, $from, $subject, $message, $file = "")
+    public function mail(string $to, string $from, string $subject, string $message, string $file = ""): bool
     {
         if ($file != "") {
             $fn = explode("/", $file);

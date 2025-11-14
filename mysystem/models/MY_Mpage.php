@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 class MY_Mpage extends base_model
 {
 

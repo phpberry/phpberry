@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
     header("Location: 404");
 }
@@ -10,7 +13,7 @@ if (basename($_SERVER['SCRIPT_NAME']) == basename(__FILE__)) {
 if (!session_id()) {
     session_start();
 }
-function flash($name = '', $message = '')
+function flash(string $name = '', string $message = ''): void
 {
     //We can only do something if the name isn't empty
     if (!empty($name)) {
@@ -31,18 +34,19 @@ function flash($name = '', $message = '')
 /*******************************************************************
  * DATA IN SEGMENT
  *******************************************************************/
-function segment($index = null)
+function segment(?int $index = null): ?string
 {
     if (isset($_SERVER['PATH_INFO'])) {
         $segment = explode('/', substr($_SERVER['PATH_INFO'], 1));
-        return $segment[$index];
+        return $segment[$index] ?? null;
     }
+    return null;
 }
 
 /*******************************************************************
  * FOURCE FULL REDIRECT
  *******************************************************************/
-function redirect($URL = null)
+function redirect(?string $URL = null): void
 {
     header("Location: $URL");
     exit();
